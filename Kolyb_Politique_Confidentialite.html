@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kolyb — Politique de Confidentialité</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0D0B1E;
+    --surface: #13112A;
+    --surface2: #1A1735;
+    --violet: #6D28D9;
+    --violet-light: #7C3AED;
+    --violet-glow: rgba(109,40,217,0.15);
+    --violet-border: rgba(109,40,217,0.3);
+    --text: #E8E4F8;
+    --text-muted: #9490B0;
+    --text-dim: #6B6785;
+    --accent: #A78BFA;
+    --white: #FFFFFF;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Figtree', sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% -10%, rgba(109,40,217,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(109,40,217,0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,11,30,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--violet-border);
+    padding: 0 48px;
+  }
+
+  .header-inner {
+    max-width: 900px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-icon { width: 28px; height: 28px; background: var(--violet); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+  .logo-text { font-size: 16px; font-weight: 700; color: var(--white); letter-spacing: 0.03em; }
+  .header-meta { font-size: 12px; color: var(--text-dim); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  .hero {
+    position: relative; z-index: 1;
+    padding: 72px 48px 48px;
+    max-width: 900px; margin: 0 auto;
+    border-bottom: 1px solid var(--violet-border);
+  }
+
+  .doc-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--violet-glow); border: 1px solid var(--violet-border);
+    border-radius: 20px; padding: 5px 14px;
+    font-size: 11px; font-weight: 600; color: var(--accent);
+    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 24px;
+  }
+  .doc-badge::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+
+  h1.page-title {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 900; line-height: 1.05;
+    letter-spacing: -0.02em; color: var(--white); margin-bottom: 16px;
+  }
+  h1.page-title span { color: var(--accent); }
+
+  .hero-sub { font-size: 16px; color: var(--text-muted); font-weight: 400; margin-bottom: 32px; max-width: 520px; }
+
+  .hero-meta { display: flex; gap: 32px; flex-wrap: wrap; }
+  .meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .meta-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); font-weight: 600; }
+  .meta-value { font-size: 13px; color: var(--accent); font-weight: 600; }
+
+  /* RGPD BADGE */
+  .rgpd-strip {
+    position: relative; z-index: 1;
+    max-width: 900px; margin: 32px auto 0;
+    padding: 0 48px;
+  }
+  .rgpd-inner {
+    display: flex; align-items: center; gap: 16px;
+    background: rgba(16,185,129,0.07);
+    border: 1px solid rgba(16,185,129,0.2);
+    border-radius: var(--radius); padding: 14px 20px;
+  }
+  .rgpd-icon { font-size: 20px; }
+  .rgpd-text { font-size: 13px; color: rgba(16,185,129,0.9); line-height: 1.5; }
+  .rgpd-text strong { font-weight: 700; }
+
+  .alert-box { position: relative; z-index: 1; max-width: 900px; margin: 32px auto 0; padding: 0 48px; }
+  .alert-inner { background: var(--violet-glow); border: 1px solid var(--violet-border); border-left: 3px solid var(--violet); border-radius: var(--radius); padding: 20px 24px; }
+  .alert-title { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .alert-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+  main { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 48px 80px; }
+
+  .toc { background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius); padding: 28px 32px; margin-bottom: 56px; margin-top: 48px; }
+  .toc-title { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 16px; }
+  .toc-list { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 32px; list-style: none; }
+  .toc-list li a { font-size: 13px; color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s; padding: 3px 0; }
+  .toc-list li a:hover { color: var(--accent); }
+  .toc-num { font-size: 10px; font-weight: 700; color: var(--violet); min-width: 20px; }
+
+  .article { margin-bottom: 52px; scroll-margin-top: 80px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .article:nth-child(1) { animation-delay: 0.05s; }
+  .article:nth-child(2) { animation-delay: 0.1s; }
+  .article:nth-child(3) { animation-delay: 0.15s; }
+  .article:nth-child(4) { animation-delay: 0.2s; }
+  .article:nth-child(5) { animation-delay: 0.25s; }
+
+  .article-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .article-num { display: flex; align-items: center; justify-content: center; min-width: 36px; height: 36px; background: var(--violet-glow); border: 1px solid var(--violet-border); border-radius: var(--radius-sm); font-size: 12px; font-weight: 700; color: var(--accent); margin-top: 2px; }
+  h2.article-title { font-size: 22px; font-weight: 700; color: var(--white); line-height: 1.2; letter-spacing: -0.01em; }
+  h3.section-title { font-size: 14px; font-weight: 700; color: var(--accent); letter-spacing: 0.05em; text-transform: uppercase; margin: 28px 0 12px; }
+
+  p { color: var(--text-muted); margin-bottom: 14px; font-size: 15px; }
+
+  ul.styled { list-style: none; margin: 12px 0 16px 0; display: flex; flex-direction: column; gap: 6px; }
+  ul.styled li { display: flex; align-items: flex-start; gap: 10px; color: var(--text-muted); font-size: 14px; line-height: 1.6; }
+  ul.styled li::before { content: '—'; color: var(--violet-light); font-weight: 700; min-width: 14px; margin-top: 1px; }
+
+  .data-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 13px; border-radius: var(--radius); overflow: hidden; }
+  .data-table thead tr { background: var(--violet); }
+  .data-table thead th { padding: 12px 16px; text-align: left; font-weight: 700; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(255,255,255,0.9); }
+  .data-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); transition: background 0.15s; }
+  .data-table tbody tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+  .data-table tbody tr:hover { background: var(--violet-glow); }
+  .data-table tbody td { padding: 12px 16px; color: var(--text-muted); vertical-align: top; }
+  .data-table tbody td:first-child { color: var(--text); font-weight: 500; }
+
+  .info-box { background: rgba(109,40,217,0.08); border: 1px solid var(--violet-border); border-left: 3px solid var(--violet-light); border-radius: var(--radius); padding: 18px 22px; margin: 20px 0; }
+  .info-box .info-title { font-size: 12px; font-weight: 700; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+  .info-box p { font-size: 13px; color: var(--text-muted); margin: 0; }
+
+  .warning-box { background: rgba(245,158,11,0.07); border: 1px solid rgba(245,158,11,0.25); border-left: 3px solid #F59E0B; border-radius: var(--radius); padding: 18px 22px; margin: 20px 0; }
+  .warning-box .info-title { font-size: 12px; font-weight: 700; color: #F59E0B; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+  .warning-box p { font-size: 13px; color: rgba(245,158,11,0.8); margin: 0; }
+
+  /* RIGHTS GRID */
+  .rights-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin: 16px 0 24px; }
+  .right-card { background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius-sm); padding: 16px; }
+  .right-card:hover { border-color: var(--violet-border); }
+  .right-name { font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+  .right-art { font-size: 10px; color: var(--text-dim); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+  .right-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--violet-border), transparent); margin: 48px 0; }
+
+  footer { position: relative; z-index: 1; border-top: 1px solid var(--violet-border); padding: 32px 48px; max-width: 900px; margin: 0 auto; }
+  .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .footer-text { font-size: 12px; color: var(--text-dim); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 12px; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    header, main, .hero, .alert-box, .rgpd-strip, footer { padding-left: 20px; padding-right: 20px; }
+    .toc-list { grid-template-columns: 1fr; }
+    .rights-grid { grid-template-columns: 1fr; }
+    .data-table { font-size: 12px; }
+    .data-table thead th, .data-table tbody td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">🚀</div>
+      <span class="logo-text">Kolyb</span>
+    </a>
+    <span class="header-meta">Document légal — Politique de confidentialité v1.0</span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="doc-badge">Conforme RGPD (UE) 2016/679</div>
+  <h1 class="page-title">Politique de<br><span>Confidentialité</span></h1>
+  <p class="hero-sub">Application bien-être & productivité pour entrepreneurs francophones.</p>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <span class="meta-label">Version</span>
+      <span class="meta-value">1.0</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Date d'entrée en vigueur</span>
+      <span class="meta-value">20 avril 2026</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Responsable de traitement</span>
+      <span class="meta-value">Cassandre Rollet EI</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Contact DPO</span>
+      <span class="meta-value">contact@kolyb.app</span>
+    </div>
+  </div>
+</section>
+
+<div class="rgpd-strip">
+  <div class="rgpd-inner">
+    <div class="rgpd-icon">🔒</div>
+    <div class="rgpd-text"><strong>Vos données ne sont jamais vendues.</strong> Kolyb collecte uniquement les données nécessaires au fonctionnement du service. Vous disposez à tout moment de vos droits d'accès, rectification, effacement et portabilité via contact@kolyb.app.</div>
+  </div>
+</div>
+
+<div class="alert-box" style="margin-top:20px;">
+  <div class="alert-inner">
+    <div class="alert-title">Résumé essentiel</div>
+    <p class="alert-text">Kolyb collecte des données personnelles, dont certaines relatives à votre bien-être et à votre santé, afin de vous offrir un accompagnement personnalisé. Ces données ne sont jamais vendues à des tiers. Vous disposez à tout moment d'un droit d'accès, de rectification, d'effacement et de portabilité. Pour toute question : contact@kolyb.app</p>
+  </div>
+</div>
+
+<main>
+
+  <div class="toc">
+    <div class="toc-title">Sommaire</div>
+    <ul class="toc-list">
+      <li><a href="#art1"><span class="toc-num">01</span> Identité du responsable de traitement</a></li>
+      <li><a href="#art2"><span class="toc-num">02</span> Données collectées</a></li>
+      <li><a href="#art3"><span class="toc-num">03</span> Finalités et bases légales</a></li>
+      <li><a href="#art4"><span class="toc-num">04</span> Données de santé – Régime spécial</a></li>
+      <li><a href="#art5"><span class="toc-num">05</span> Destinataires et partage</a></li>
+      <li><a href="#art6"><span class="toc-num">06</span> Transferts hors UE</a></li>
+      <li><a href="#art7"><span class="toc-num">07</span> Durée de conservation</a></li>
+      <li><a href="#art8"><span class="toc-num">08</span> Droits des utilisateurs</a></li>
+      <li><a href="#art9"><span class="toc-num">09</span> Sécurité des données</a></li>
+      <li><a href="#art10"><span class="toc-num">10</span> Cookies et traceurs</a></li>
+      <li><a href="#art11"><span class="toc-num">11</span> Protection des mineurs</a></li>
+      <li><a href="#art12"><span class="toc-num">12</span> Profilage et décisions automatisées</a></li>
+      <li><a href="#art13"><span class="toc-num">13</span> Mise à jour de la politique</a></li>
+    </ul>
+  </div>
+
+  <!-- ART 1 -->
+  <div class="article" id="art1">
+    <div class="article-header">
+      <div class="article-num">01</div>
+      <h2 class="article-title">Identité du responsable de traitement</h2>
+    </div>
+    <table class="data-table">
+      <tbody>
+        <tr><td>Nom / Raison sociale</td><td>CASSANDRE ROLLET EI</td></tr>
+        <tr><td>Statut juridique</td><td>Entrepreneur Individuelle</td></tr>
+        <tr><td>Numéro SIRET</td><td>989 438 957</td></tr>
+        <tr><td>Adresse du siège</td><td>22 Avenue de l'Espinasse – 07200 Saint-Sernin</td></tr>
+        <tr><td>E-mail de contact</td><td>contact@kolyb.app</td></tr>
+        <tr><td>Hébergeur principal</td><td>Firebase (Google LLC) – europe-west9 (Paris, France)</td></tr>
+        <tr><td>Infrastructure complémentaire</td><td>Supabase Inc. – eu-central-1 (Frankfurt, Allemagne)</td></tr>
+      </tbody>
+    </table>
+    <p>Le responsable de traitement est la personne physique qui détermine les finalités et les moyens du traitement des données à caractère personnel au sens de l'article 4 du Règlement (UE) 2016/679 (RGPD).</p>
+  </div>
+
+  <!-- ART 2 -->
+  <div class="article" id="art2">
+    <div class="article-header">
+      <div class="article-num">02</div>
+      <h2 class="article-title">Données collectées</h2>
+    </div>
+    <h3 class="section-title">2.1 Données d'identité et de contact</h3>
+    <ul class="styled">
+      <li>Nom, prénom</li>
+      <li>Adresse e-mail</li>
+      <li>Mot de passe (stocké sous forme chiffrée bcrypt, jamais lisible en clair)</li>
+      <li>Âge ou date de naissance</li>
+      <li>Genre (optionnel)</li>
+      <li>Photo de profil (optionnelle)</li>
+      <li>Informations de connexion Google ou Apple si SSO utilisé</li>
+    </ul>
+
+    <h3 class="section-title">2.2 Données de bien-être et de santé (données sensibles)</h3>
+    <div class="warning-box">
+      <div class="info-title">⚠ Données sensibles — Article 9 RGPD</div>
+      <p>Les données relatives à votre bien-être (sommeil, humeur, niveau d'énergie, état émotionnel) sont susceptibles d'être qualifiées de données de santé au sens de l'article 9 du RGPD. Leur traitement repose exclusivement sur votre consentement explicite, librement donné, spécifique et révocable à tout moment.</p>
+    </div>
+    <ul class="styled">
+      <li>Qualité et durée du sommeil (renseignées lors des check-in)</li>
+      <li>Niveau d'énergie et d'humeur (check-in matin et soir)</li>
+      <li>Indicateurs de stress, de bien-être subjectif ou d'état émotionnel</li>
+      <li>Objectifs personnels de bien-être renseignés dans les planners</li>
+    </ul>
+
+    <h3 class="section-title">2.3 Données de profil entrepreneurial</h3>
+    <ul class="styled">
+      <li>Secteur d'activité, type de projet</li>
+      <li>Stade de développement de l'entreprise</li>
+      <li>Compétences, besoins et centres d'intérêt professionnels déclarés</li>
+      <li>Objectifs de productivité et d'activité renseignés dans les planners</li>
+    </ul>
+
+    <h3 class="section-title">2.4 Données de contenu généré</h3>
+    <ul class="styled">
+      <li>Messages publiés dans les groupes communautaires</li>
+      <li>Commentaires, réponses, réactions</li>
+      <li>Contenus partagés lors des webinaires et lives</li>
+    </ul>
+
+    <h3 class="section-title">2.5 Données techniques et de navigation</h3>
+    <ul class="styled">
+      <li>Adresse IP</li>
+      <li>Type d'appareil, système d'exploitation, version de l'application</li>
+      <li>Pages et fonctionnalités consultées, fréquence d'utilisation</li>
+      <li>Identifiants de session Firebase / Supabase</li>
+      <li>Données analytics PostHog (pseudonymisées, hébergées en UE — eu-central-1 Frankfurt)</li>
+    </ul>
+  </div>
+
+  <!-- ART 3 -->
+  <div class="article" id="art3">
+    <div class="article-header">
+      <div class="article-num">03</div>
+      <h2 class="article-title">Finalités et bases légales des traitements</h2>
+    </div>
+    <p>Conformément à l'article 13 du RGPD, chaque traitement repose sur une base légale identifiée :</p>
+    <table class="data-table">
+      <thead>
+        <tr><th>Finalité</th><th>Données concernées</th><th>Base légale</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Fourniture du service Kolyb (compte, planners, check-in)</td><td>Identité, bien-être, profil entrepreneur</td><td>Exécution du contrat (art. 6.1.b)</td></tr>
+        <tr><td>Personnalisation de l'expérience et recommandations</td><td>Bien-être, profil, comportement</td><td>Consentement explicite (art. 6.1.a)</td></tr>
+        <tr><td>Algorithme de mise en relation ciblée entre membres</td><td>Profil entrepreneur, centres d'intérêt</td><td>Consentement explicite (art. 6.1.a)</td></tr>
+        <tr><td>Accès aux webinaires, lives et événements</td><td>Identité, données de connexion</td><td>Exécution du contrat (art. 6.1.b)</td></tr>
+        <tr><td>Analytics produit (PostHog – UE)</td><td>Données techniques de navigation</td><td>Intérêt légitime (art. 6.1.f)</td></tr>
+        <tr><td>Communications marketing et newsletters</td><td>E-mail, préférences</td><td>Consentement (art. 6.1.a)</td></tr>
+        <tr><td>Modération des contenus communautaires</td><td>Contenus générés</td><td>Intérêt légitime (art. 6.1.f)</td></tr>
+        <tr><td>Gestion de la facturation (Stripe)</td><td>Identité, données de paiement</td><td>Obligation légale (art. 6.1.c)</td></tr>
+        <tr><td>Données bien-être / santé (art. 9 RGPD)</td><td>Données bien-être sensibles</td><td>Consentement explicite distinct (art. 9.2.a)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ART 4 -->
+  <div class="article" id="art4">
+    <div class="article-header">
+      <div class="article-num">04</div>
+      <h2 class="article-title">Données de bien-être et de santé — Régime spécial</h2>
+    </div>
+    <h3 class="section-title">4.1 Consentement explicite</h3>
+    <p>Le traitement de ces données est subordonné à l'obtention d'un consentement libre, spécifique, éclairé et univoque, recueilli séparément des CGU, lors de l'onboarding ou de l'activation de la fonctionnalité concernée. L'utilisateur peut retirer ce consentement à tout moment, sans que cela n'affecte la licéité des traitements effectués avant le retrait.</p>
+
+    <h3 class="section-title">4.2 Finalité strictement délimitée</h3>
+    <p>Ces données ne sont utilisées qu'aux fins suivantes :</p>
+    <ul class="styled">
+      <li>Affichage personnalisé dans l'application (historique, graphiques, suivi personnel)</li>
+      <li>Suggestions de ressources et de contenus adaptés au profil de bien-être de l'utilisateur</li>
+      <li>Amélioration statistique et anonymisée des fonctionnalités Kolyb</li>
+    </ul>
+    <div class="info-box">
+      <div class="info-title">Garanties absolues</div>
+      <p>Ces données ne sont en aucun cas transmises à des tiers à des fins commerciales, utilisées pour établir un profil médical ou partagées avec des organismes d'assurance, de crédit ou de recrutement.</p>
+    </div>
+
+    <h3 class="section-title">4.3 Sécurité renforcée</h3>
+    <p>Les données de bien-être font l'objet de mesures de sécurité renforcées : chiffrement au repos et en transit, pseudonymisation, accès restreint aux seules personnes habilitées, journalisation des accès.</p>
+  </div>
+
+  <!-- ART 5 -->
+  <div class="article" id="art5">
+    <div class="article-header">
+      <div class="article-num">05</div>
+      <h2 class="article-title">Destinataires et partage des données</h2>
+    </div>
+    <p>Kolyb ne vend ni ne cède vos données personnelles à des tiers à des fins commerciales.</p>
+    <h3 class="section-title">5.1 Sous-traitants techniques</h3>
+    <table class="data-table">
+      <thead>
+        <tr><th>Prestataire</th><th>Rôle</th><th>Localisation</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Firebase (Google LLC)</td><td>Hébergement, authentification, base de données temps réel</td><td>europe-west9 – Paris (UE)</td></tr>
+        <tr><td>Supabase Inc.</td><td>Infrastructure base de données PostgreSQL</td><td>eu-central-1 – Frankfurt (UE)</td></tr>
+        <tr><td>Stripe Inc.</td><td>Paiement en ligne sécurisé (PCI-DSS)</td><td>USA — Data Privacy Framework</td></tr>
+        <tr><td>PostHog Inc.</td><td>Analytics d'usage produit (données pseudonymisées)</td><td>eu-central-1 – Frankfurt (UE)</td></tr>
+        <tr><td>OVH / Zimbra</td><td>Emailing et communications transactionnelles</td><td>France (UE)</td></tr>
+        <tr><td>Apple / Google</td><td>SSO (Sign in with Apple / Google OAuth)</td><td>USA — Data Privacy Framework</td></tr>
+      </tbody>
+    </table>
+    <h3 class="section-title">5.2 Mise en relation entre membres</h3>
+    <p>Dans le cadre de la fonctionnalité de mise en réseau, certaines informations de profil (secteur d'activité, objectifs, compétences) peuvent être rendues visibles à d'autres membres, selon les paramètres de confidentialité choisis. <strong style="color:var(--text)">Les données de bien-être, de santé et les check-in ne sont jamais partagés avec d'autres membres.</strong></p>
+  </div>
+
+  <!-- ART 6 -->
+  <div class="article" id="art6">
+    <div class="article-header">
+      <div class="article-num">06</div>
+      <h2 class="article-title">Transferts de données hors de l'Union européenne</h2>
+    </div>
+    <p>Certains sous-traitants sont établis hors de l'UE. Kolyb s'assure que les transferts sont encadrés par des garanties appropriées :</p>
+    <ul class="styled">
+      <li>Data Privacy Framework UE-USA (décision d'adéquation du 10 juillet 2023) — applicable à Google, Apple, Stripe</li>
+      <li>Clauses Contractuelles Types (CCT) adoptées par la Commission européenne</li>
+    </ul>
+    <table class="data-table">
+      <thead>
+        <tr><th>Prestataire</th><th>Pays</th><th>Garantie RGPD</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Firebase (Google LLC)</td><td>USA (serveur EU)</td><td>Données stockées europe-west9 (Paris)</td></tr>
+        <tr><td>Supabase</td><td>USA (serveur EU)</td><td>Données stockées eu-central-1 (Frankfurt)</td></tr>
+        <tr><td>Stripe Inc.</td><td>USA</td><td>Data Privacy Framework UE-USA + CCT</td></tr>
+        <tr><td>Apple / Google (SSO)</td><td>USA</td><td>Data Privacy Framework UE-USA</td></tr>
+        <tr><td>PostHog</td><td>USA (serveur EU)</td><td>Données stockées eu-central-1 (Frankfurt)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ART 7 -->
+  <div class="article" id="art7">
+    <div class="article-header">
+      <div class="article-num">07</div>
+      <h2 class="article-title">Durée de conservation des données</h2>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Catégorie de données</th><th>Durée de conservation</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Compte actif (données d'identité et profil)</td><td>Pendant toute la durée du compte, puis 3 ans après la dernière activité</td></tr>
+        <tr><td>Données de bien-être et check-in</td><td>2 ans après la dernière utilisation active, sauf opposition anticipée</td></tr>
+        <tr><td>Données de navigation et analytics (PostHog)</td><td>13 mois maximum (recommandation CNIL)</td></tr>
+        <tr><td>Données de facturation et paiement (Stripe)</td><td>10 ans (obligation légale comptable)</td></tr>
+        <tr><td>Cookies fonctionnels et analytiques</td><td>13 mois maximum</td></tr>
+        <tr><td>Données suite à suppression de compte</td><td>Suppression sous 30 jours, sauf obligation légale de conservation</td></tr>
+        <tr><td>Contenu des groupes et échanges communautaires</td><td>Durée de vie du compte, puis suppression dans les 30 jours</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ART 8 -->
+  <div class="article" id="art8">
+    <div class="article-header">
+      <div class="article-num">08</div>
+      <h2 class="article-title">Droits des utilisateurs</h2>
+    </div>
+    <p>Conformément au RGPD (articles 15 à 22), tout utilisateur dispose des droits suivants sur ses données personnelles :</p>
+    <div class="rights-grid">
+      <div class="right-card">
+        <div class="right-art">Art. 15</div>
+        <div class="right-name">Droit d'accès</div>
+        <div class="right-desc">Obtenir confirmation du traitement et copie des données vous concernant.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-art">Art. 16</div>
+        <div class="right-name">Droit de rectification</div>
+        <div class="right-desc">Corriger des données inexactes ou incomplètes vous concernant.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-art">Art. 17</div>
+        <div class="right-name">Droit à l'effacement</div>
+        <div class="right-desc">Demander la suppression de vos données (sous réserve d'obligations légales).</div>
+      </div>
+      <div class="right-card">
+        <div class="right-art">Art. 18</div>
+        <div class="right-name">Droit à la limitation</div>
+        <div class="right-desc">Demander la suspension temporaire du traitement dans certains cas.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-art">Art. 20</div>
+        <div class="right-name">Droit à la portabilité</div>
+        <div class="right-desc">Recevoir vos données dans un format structuré et lisible par machine.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-art">Art. 21</div>
+        <div class="right-name">Droit d'opposition</div>
+        <div class="right-desc">S'opposer au traitement fondé sur l'intérêt légitime de Kolyb.</div>
+      </div>
+    </div>
+    <div class="info-box">
+      <div class="info-title">Comment exercer vos droits</div>
+      <p>Adressez votre demande à contact@kolyb.app ou par courrier : 22 Avenue de l'Espinasse, 07200 Saint-Sernin. Réponse dans un délai de 30 jours. Une justification d'identité pourra vous être demandée.</p>
+    </div>
+    <h3 class="section-title">8.9 Droit de réclamation auprès de la CNIL</h3>
+    <ul class="styled">
+      <li>Site internet : <a href="https://www.cnil.fr" style="color:var(--accent)">www.cnil.fr</a></li>
+      <li>Courrier : CNIL – 3 place de Fontenoy – TSA 80715 – 75334 Paris Cedex 07</li>
+    </ul>
+  </div>
+
+  <!-- ART 9 -->
+  <div class="article" id="art9">
+    <div class="article-header">
+      <div class="article-num">09</div>
+      <h2 class="article-title">Sécurité des données</h2>
+    </div>
+    <h3 class="section-title">9.1 Mesures techniques</h3>
+    <ul class="styled">
+      <li>Chiffrement des données en transit via le protocole TLS 1.2 minimum (HTTPS)</li>
+      <li>Chiffrement des données au repos pour les données sensibles (mots de passe hashés bcrypt)</li>
+      <li>Authentification sécurisée (mot de passe haché, option double authentification)</li>
+      <li>Pseudonymisation des données analytics (PostHog)</li>
+      <li>Journalisation des accès aux données sensibles</li>
+      <li>Sauvegardes régulières Firebase et Supabase avec procédure de restauration testée</li>
+    </ul>
+    <h3 class="section-title">9.3 Violation de données personnelles</h3>
+    <p>En cas de violation de données susceptible d'engendrer un risque pour les droits et libertés des personnes, Kolyb s'engage à notifier la CNIL dans un délai de 72 heures (art. 33 RGPD) et à informer les utilisateurs concernés dans les meilleurs délais lorsque le risque est élevé (art. 34 RGPD).</p>
+  </div>
+
+  <!-- ART 10 -->
+  <div class="article" id="art10">
+    <div class="article-header">
+      <div class="article-num">10</div>
+      <h2 class="article-title">Cookies et traceurs</h2>
+    </div>
+    <h3 class="section-title">10.1 Cookies strictement nécessaires</h3>
+    <p>Ces cookies sont indispensables au fonctionnement de l'application et ne requièrent pas de consentement préalable. Ils comprennent les cookies de session Firebase, les tokens de sécurité CSRF et les cookies de mémorisation des préférences de confidentialité.</p>
+    <h3 class="section-title">10.2 Cookies analytiques (nécessitent consentement)</h3>
+    <p>Avec votre consentement, Kolyb utilise <strong style="color:var(--text)">PostHog</strong> pour analyser les performances de l'application. PostHog est hébergé sur des serveurs européens (eu-central-1, Frankfurt). Les données sont pseudonymisées et aucun croisement avec des données publicitaires n'est effectué.</p>
+    <h3 class="section-title">10.3 Gestion des préférences</h3>
+    <p>Lors de votre première connexion, un bandeau de gestion des cookies vous permet d'accepter ou de refuser les cookies non essentiels. Vous pouvez modifier vos préférences à tout moment depuis les paramètres de l'application. Refuser les cookies analytiques n'affecte pas votre accès aux fonctionnalités principales de Kolyb.</p>
+  </div>
+
+  <!-- ART 11 -->
+  <div class="article" id="art11">
+    <div class="article-header">
+      <div class="article-num">11</div>
+      <h2 class="article-title">Protection des mineurs</h2>
+    </div>
+    <p>Kolyb est une application destinée aux entrepreneurs et aux professionnels. L'accès au service est strictement réservé aux personnes âgées de 18 ans et plus. Kolyb ne collecte pas intentionnellement de données personnelles concernant des mineurs de moins de 18 ans. Si nous apprenons qu'un mineur nous a communiqué des données sans consentement parental, nous procéderons à leur suppression dans les meilleurs délais. Contactez-nous à contact@kolyb.app si vous êtes le représentant légal d'un mineur dans cette situation.</p>
+  </div>
+
+  <!-- ART 12 -->
+  <div class="article" id="art12">
+    <div class="article-header">
+      <div class="article-num">12</div>
+      <h2 class="article-title">Profilage et décisions automatisées</h2>
+    </div>
+    <p>Kolyb utilise un algorithme de mise en relation pour suggérer des connexions pertinentes entre membres de la communauté. Ce traitement constitue un profilage au sens de l'article 4.4 du RGPD.</p>
+    <p>Ce profilage :</p>
+    <ul class="styled">
+      <li>Est fondé sur votre consentement explicite préalable</li>
+      <li>N'est pas destiné à produire des effets juridiques ou à vous affecter de manière significative</li>
+      <li>Repose uniquement sur les données de profil entrepreneurial que vous avez volontairement renseignées</li>
+      <li>Peut être contesté ou désactivé à tout moment depuis vos paramètres</li>
+    </ul>
+    <p>Kolyb ne prend pas de décisions entièrement automatisées produisant des effets juridiques à votre égard (article 22 du RGPD).</p>
+  </div>
+
+  <!-- ART 13 -->
+  <div class="article" id="art13">
+    <div class="article-header">
+      <div class="article-num">13</div>
+      <h2 class="article-title">Mise à jour de la politique de confidentialité</h2>
+    </div>
+    <p>La présente Politique de confidentialité peut être mise à jour pour refléter des évolutions légales, réglementaires ou liées aux fonctionnalités de l'application. En cas de modification substantielle, Kolyb s'engage à informer les utilisateurs par notification in-app et par e-mail au moins 30 jours avant l'entrée en vigueur des modifications.</p>
+    <div class="info-box">
+      <div class="info-title">Contact RGPD</div>
+      <p>Pour toute question relative à la présente Politique de confidentialité ou à l'exercice de vos droits : contact@kolyb.app — Réponse garantie dans un délai de 30 jours.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-text">© Kolyb 2026 — Tous droits réservés — Politique de Confidentialité v1.0 — 20 avril 2026 — Conforme RGPD (UE) 2016/679</span>
+    <div class="footer-links">
+      <a href="cgu.html">CGU</a>
+      <a href="mailto:contact@kolyb.app">contact@kolyb.app</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

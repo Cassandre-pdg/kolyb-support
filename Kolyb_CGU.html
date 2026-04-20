@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kolyb — Conditions Générales d'Utilisation</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0D0B1E;
+    --surface: #13112A;
+    --surface2: #1A1735;
+    --violet: #6D28D9;
+    --violet-light: #7C3AED;
+    --violet-glow: rgba(109,40,217,0.15);
+    --violet-border: rgba(109,40,217,0.3);
+    --text: #E8E4F8;
+    --text-muted: #9490B0;
+    --text-dim: #6B6785;
+    --accent: #A78BFA;
+    --white: #FFFFFF;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Figtree', sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+    min-height: 100vh;
+  }
+
+  /* BACKGROUND TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% -10%, rgba(109,40,217,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(109,40,217,0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* HEADER */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13,11,30,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--violet-border);
+    padding: 0 48px;
+  }
+
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 28px;
+    height: 28px;
+    background: var(--violet);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  .logo-text {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.03em;
+  }
+
+  .header-meta {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    z-index: 1;
+    padding: 72px 48px 48px;
+    max-width: 900px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--violet-border);
+  }
+
+  .doc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--violet-glow);
+    border: 1px solid var(--violet-border);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .doc-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  h1.page-title {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  h1.page-title span {
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-bottom: 32px;
+    max-width: 520px;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .meta-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    font-weight: 600;
+  }
+
+  .meta-value {
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ALERT BOX */
+  .alert-box {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 48px;
+  }
+
+  .alert-inner {
+    background: var(--violet-glow);
+    border: 1px solid var(--violet-border);
+    border-left: 3px solid var(--violet);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+  }
+
+  .alert-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .alert-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* MAIN CONTENT */
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 48px 80px;
+  }
+
+  /* TABLE OF CONTENTS */
+  .toc {
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-bottom: 56px;
+  }
+
+  .toc-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+
+  .toc-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 32px;
+    list-style: none;
+  }
+
+  .toc-list li a {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+    padding: 3px 0;
+  }
+
+  .toc-list li a:hover { color: var(--accent); }
+
+  .toc-num {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--violet);
+    min-width: 20px;
+  }
+
+  /* ARTICLES */
+  .article {
+    margin-bottom: 52px;
+    scroll-margin-top: 80px;
+  }
+
+  .article-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .article-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    background: var(--violet-glow);
+    border: 1px solid var(--violet-border);
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-top: 2px;
+  }
+
+  h2.article-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  h3.section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 28px 0 12px;
+  }
+
+  p {
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    font-size: 15px;
+  }
+
+  ul.styled {
+    list-style: none;
+    margin: 12px 0 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  ul.styled li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  ul.styled li::before {
+    content: '—';
+    color: var(--violet-light);
+    font-weight: 700;
+    min-width: 14px;
+    margin-top: 1px;
+  }
+
+  /* TABLES */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 13px;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .data-table thead tr {
+    background: var(--violet);
+  }
+
+  .data-table thead th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .data-table tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: background 0.15s;
+  }
+
+  .data-table tbody tr:nth-child(even) {
+    background: rgba(255,255,255,0.02);
+  }
+
+  .data-table tbody tr:hover {
+    background: var(--violet-glow);
+  }
+
+  .data-table tbody td {
+    padding: 12px 16px;
+    color: var(--text-muted);
+    vertical-align: top;
+  }
+
+  .data-table tbody td:first-child {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* INFO BOX */
+  .info-box {
+    background: rgba(109,40,217,0.08);
+    border: 1px solid var(--violet-border);
+    border-left: 3px solid var(--violet-light);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin: 20px 0;
+  }
+
+  .info-box .info-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .info-box p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* WARNING BOX */
+  .warning-box {
+    background: rgba(245,158,11,0.07);
+    border: 1px solid rgba(245,158,11,0.25);
+    border-left: 3px solid #F59E0B;
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin: 20px 0;
+  }
+
+  .warning-box .info-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #F59E0B;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .warning-box p {
+    font-size: 13px;
+    color: rgba(245,158,11,0.8);
+    margin: 0;
+  }
+
+  /* OFFER CARDS */
+  .offer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0 24px;
+  }
+
+  .offer-card {
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: var(--radius);
+    padding: 20px;
+    transition: border-color 0.2s;
+  }
+
+  .offer-card.premium {
+    border-color: var(--violet-border);
+    background: var(--violet-glow);
+  }
+
+  .offer-card:hover { border-color: var(--violet-border); }
+
+  .offer-name {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+  }
+
+  .offer-card.premium .offer-name { color: var(--accent); }
+
+  .offer-price {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .offer-price span {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-dim);
+  }
+
+  .offer-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--violet-border), transparent);
+    margin: 48px 0;
+  }
+
+  /* FOOTER */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--violet-border);
+    padding: 32px 48px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-text {
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    header, main, .hero, .alert-box, footer { padding-left: 20px; padding-right: 20px; }
+    .toc-list { grid-template-columns: 1fr; }
+    .offer-grid { grid-template-columns: 1fr; }
+    .data-table { font-size: 12px; }
+    .data-table thead th, .data-table tbody td { padding: 8px 10px; }
+  }
+
+  /* SCROLL ANIMATION */
+  .article {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.5s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .article:nth-child(1) { animation-delay: 0.05s; }
+  .article:nth-child(2) { animation-delay: 0.1s; }
+  .article:nth-child(3) { animation-delay: 0.15s; }
+  .article:nth-child(4) { animation-delay: 0.2s; }
+  .article:nth-child(5) { animation-delay: 0.25s; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">🚀</div>
+      <span class="logo-text">Kolyb</span>
+    </a>
+    <span class="header-meta">Document légal — CGU v1.0</span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="doc-badge">Document contractuel</div>
+  <h1 class="page-title">Conditions Générales<br><span>d'Utilisation</span></h1>
+  <p class="hero-sub">Application bien-être & productivité pour entrepreneurs francophones.</p>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <span class="meta-label">Version</span>
+      <span class="meta-value">1.0</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Date d'entrée en vigueur</span>
+      <span class="meta-value">20 avril 2026</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Éditrice</span>
+      <span class="meta-value">Cassandre Rollet EI</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Contact</span>
+      <span class="meta-value">contact@kolyb.app</span>
+    </div>
+  </div>
+</section>
+
+<div class="alert-box">
+  <div class="alert-inner">
+    <div class="alert-title">À lire avant d'utiliser Kolyb</div>
+    <p class="alert-text">Les présentes CGU constituent un contrat juridiquement contraignant entre vous et Kolyb. En créant un compte ou en utilisant l'application, vous acceptez l'intégralité des présentes CGU. Si vous n'acceptez pas ces conditions, vous ne devez pas utiliser Kolyb. Ces CGU sont à lire conjointement avec la Politique de confidentialité de Kolyb.</p>
+  </div>
+</div>
+
+<main>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc">
+    <div class="toc-title">Sommaire</div>
+    <ul class="toc-list">
+      <li><a href="#art1"><span class="toc-num">01</span> Présentation de Kolyb</a></li>
+      <li><a href="#art2"><span class="toc-num">02</span> Acceptation et entrée en vigueur</a></li>
+      <li><a href="#art3"><span class="toc-num">03</span> Accès, inscription et compte</a></li>
+      <li><a href="#art4"><span class="toc-num">04</span> Description des fonctionnalités</a></li>
+      <li><a href="#art5"><span class="toc-num">05</span> Offres et abonnements</a></li>
+      <li><a href="#art6"><span class="toc-num">06</span> Règles de la communauté</a></li>
+      <li><a href="#art7"><span class="toc-num">07</span> Propriété intellectuelle</a></li>
+      <li><a href="#art8"><span class="toc-num">08</span> Responsabilités et limitations</a></li>
+      <li><a href="#art9"><span class="toc-num">09</span> Modération et sanctions</a></li>
+      <li><a href="#art10"><span class="toc-num">10</span> Résiliation et suppression</a></li>
+      <li><a href="#art11"><span class="toc-num">11</span> Disponibilité et maintenance</a></li>
+      <li><a href="#art12"><span class="toc-num">12</span> Modification des CGU</a></li>
+      <li><a href="#art15"><span class="toc-num">15</span> Médiation et litiges</a></li>
+      <li><a href="#art16"><span class="toc-num">16</span> Droit applicable</a></li>
+    </ul>
+  </div>
+
+  <!-- ART 1 -->
+  <div class="article" id="art1">
+    <div class="article-header">
+      <div class="article-num">01</div>
+      <h2 class="article-title">Présentation de Kolyb et de l'éditrice</h2>
+    </div>
+    <p>L'application Kolyb est éditée par :</p>
+    <table class="data-table">
+      <tbody>
+        <tr><td>Nom / Raison sociale</td><td>CASSANDRE ROLLET EI</td></tr>
+        <tr><td>Statut juridique</td><td>Entrepreneur Individuelle</td></tr>
+        <tr><td>Numéro SIRET</td><td>989 438 957</td></tr>
+        <tr><td>Adresse du siège</td><td>22 Avenue de l'Espinasse – 07200 Saint-Sernin</td></tr>
+        <tr><td>E-mail de contact</td><td>contact@kolyb.app</td></tr>
+        <tr><td>Directrice de la publication</td><td>Cassandre Rollet</td></tr>
+        <tr><td>Hébergeur principal</td><td>Firebase (Google LLC) – europe-west9 (Paris, France)</td></tr>
+        <tr><td>Infrastructure complémentaire</td><td>Supabase Inc. – eu-central-1 (Frankfurt, Allemagne)</td></tr>
+      </tbody>
+    </table>
+    <p>Kolyb est une application mobile et web dédiée au bien-être et à la productivité des entrepreneurs. Elle propose notamment des fonctionnalités de suivi personnel (planners, check-in matin et soir), une communauté privée (groupes thématiques, mise en réseau), des événements en ligne (webinaires, lives avec intervenants) et, à terme, un algorithme de mise en relation ciblée entre membres.</p>
+  </div>
+
+  <!-- ART 2 -->
+  <div class="article" id="art2">
+    <div class="article-header">
+      <div class="article-num">02</div>
+      <h2 class="article-title">Acceptation et entrée en vigueur</h2>
+    </div>
+    <p>L'accès et l'utilisation de l'application Kolyb sont soumis à l'acceptation expresse et sans réserve des présentes CGU. Cette acceptation intervient :</p>
+    <ul class="styled">
+      <li>Lors de la création du compte, par la case à cocher « J'accepte les Conditions Générales d'Utilisation »</li>
+      <li>Ou lors de la première connexion à l'application, via la validation d'un écran de consentement dédié</li>
+    </ul>
+    <p>L'utilisateur reconnaît avoir lu, compris et accepté l'intégralité des présentes CGU, ainsi que la Politique de confidentialité de Kolyb. Toute utilisation de l'application après modification des CGU notifiée conformément à l'Article 12 vaut acceptation de la version modifiée.</p>
+  </div>
+
+  <!-- ART 3 -->
+  <div class="article" id="art3">
+    <div class="article-header">
+      <div class="article-num">03</div>
+      <h2 class="article-title">Accès au service, inscription et compte</h2>
+    </div>
+    <h3 class="section-title">3.1 Conditions d'éligibilité</h3>
+    <p>L'accès à Kolyb est réservé aux personnes physiques :</p>
+    <ul class="styled">
+      <li>Âgées d'au moins 18 ans</li>
+      <li>Ayant la capacité juridique de contracter</li>
+      <li>Exerçant ou souhaitant exercer une activité entrepreneuriale, professionnelle ou indépendante</li>
+    </ul>
+
+    <h3 class="section-title">3.2 Création du compte</h3>
+    <p>Pour accéder aux fonctionnalités de Kolyb, l'utilisateur doit créer un compte. L'inscription peut s'effectuer via :</p>
+    <ul class="styled">
+      <li>Adresse e-mail et mot de passe</li>
+      <li>Connexion via Google (OAuth 2.0)</li>
+      <li>Connexion via Apple (Sign in with Apple)</li>
+    </ul>
+
+    <h3 class="section-title">3.3 Sécurité et responsabilité du compte</h3>
+    <p>L'utilisateur est seul responsable de la confidentialité de ses identifiants de connexion. Il s'engage à ne pas les communiquer à des tiers et à informer Kolyb sans délai de toute utilisation non autorisée de son compte.</p>
+
+    <h3 class="section-title">3.4 Compte unique et personnel</h3>
+    <p>Chaque utilisateur ne peut détenir qu'un seul compte actif. Les comptes sont strictement personnels et ne peuvent être cédés, transférés ou partagés.</p>
+  </div>
+
+  <!-- ART 4 -->
+  <div class="article" id="art4">
+    <div class="article-header">
+      <div class="article-num">04</div>
+      <h2 class="article-title">Description des fonctionnalités</h2>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Fonctionnalité</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Planners personnalisés</td><td>Outils de planification quotidienne, hebdomadaire et mensuelle adaptés aux objectifs de l'utilisateur</td></tr>
+        <tr><td>Check-in matin et soir</td><td>Suivi du bien-être, de l'humeur, de l'énergie et du sommeil via des questionnaires courts</td></tr>
+        <tr><td>Groupes communautaires</td><td>Espaces d'échange thématiques privés entre entrepreneurs membres de Kolyb</td></tr>
+        <tr><td>Mise en réseau</td><td>Découverte de profils d'autres membres selon des critères de complémentarité</td></tr>
+        <tr><td>Webinaires et lives</td><td>Sessions en ligne animées par des intervenants experts, accessibles selon l'offre souscrite</td></tr>
+        <tr><td>Algorithme de mise en relation</td><td>Outil de suggestion ciblée de connexions entre membres (déploiement progressif)</td></tr>
+        <tr><td>Ressources et contenus</td><td>Bibliothèque de ressources, articles et outils en lien avec la productivité et le bien-être entrepreneur</td></tr>
+      </tbody>
+    </table>
+    <div class="info-box">
+      <div class="info-title">Évolution des fonctionnalités</div>
+      <p>Kolyb est une application en développement actif. De nouvelles fonctionnalités peuvent être ajoutées, modifiées ou retirées à tout moment. Les utilisateurs seront informés de toute modification substantielle via notification in-app ou e-mail.</p>
+    </div>
+  </div>
+
+  <!-- ART 5 -->
+  <div class="article" id="art5">
+    <div class="article-header">
+      <div class="article-num">05</div>
+      <h2 class="article-title">Offres, abonnements et conditions tarifaires</h2>
+    </div>
+    <h3 class="section-title">5.1 Offres disponibles</h3>
+    <div class="offer-grid">
+      <div class="offer-card">
+        <div class="offer-name">Gratuite — Freemium</div>
+        <div class="offer-price">0 €<span> / toujours</span></div>
+        <div class="offer-desc">Accès aux fonctionnalités de base : planners limités, check-in quotidien, accès partiel à la communauté. Sans engagement, sans carte bancaire.</div>
+      </div>
+      <div class="offer-card premium">
+        <div class="offer-name">⭐ Premium</div>
+        <div class="offer-price">12,99 €<span> / mois</span></div>
+        <div class="offer-desc">Ou 99 € / an (soit 8,25 € / mois). Accès illimité à toutes les fonctionnalités : planners avancés, algorithme de mise en relation, webinaires, lives, ressources exclusives.</div>
+      </div>
+    </div>
+    <p>Les tarifs en vigueur sont consultables à tout moment depuis l'application (section « Abonnement »).</p>
+
+    <h3 class="section-title">5.2 Modalités de paiement</h3>
+    <ul class="styled">
+      <li>Stripe – carte bancaire (Visa, Mastercard, CB) — paiement direct par carte</li>
+      <li>Apple Pay – via l'App Store Apple</li>
+      <li>Google Pay – via Google Play</li>
+    </ul>
+    <p>Kolyb ne stocke pas vos données bancaires sur ses serveurs. L'ensemble des transactions est géré par Stripe et les plateformes de paiement concernées (PCI-DSS).</p>
+
+    <h3 class="section-title">5.3 Abonnement et renouvellement automatique</h3>
+    <p>Les abonnements payants sont renouvelés automatiquement à la période choisie (mensuelle ou annuelle), sauf résiliation par l'utilisateur avant la date de renouvellement. L'utilisateur est informé par e-mail au moins 7 jours avant la date d'échéance. La résiliation peut être effectuée à tout moment depuis les paramètres du compte, rubrique « Abonnement ».</p>
+
+    <h3 class="section-title">5.4 Droit de rétractation</h3>
+    <div class="info-box">
+      <div class="info-title">Droit légal de rétractation – 14 jours</div>
+      <p>Conformément aux articles L.221-18 et suivants du Code de la consommation, l'utilisateur consommateur dispose d'un délai de 14 jours calendaires à compter de la souscription pour exercer son droit de rétractation, sans avoir à justifier de motifs ni à payer de pénalités. Ce droit peut être exercé en contactant Kolyb à l'adresse contact@kolyb.app. En cas de rétractation, Kolyb procédera au remboursement dans un délai de 14 jours.</p>
+    </div>
+
+    <h3 class="section-title">5.5 Modification tarifaire</h3>
+    <p>Kolyb se réserve le droit de modifier ses tarifs à tout moment. Toute modification tarifaire sera notifiée par e-mail au moins 30 jours avant son entrée en vigueur. L'utilisateur pourra, durant ce délai, résilier son abonnement sans frais.</p>
+  </div>
+
+  <!-- ART 6 -->
+  <div class="article" id="art6">
+    <div class="article-header">
+      <div class="article-num">06</div>
+      <h2 class="article-title">Règles de la communauté et comportements interdits</h2>
+    </div>
+    <p>La communauté Kolyb repose sur le respect mutuel, la bienveillance et la coopération entre entrepreneurs. Il est strictement interdit de :</p>
+    <ul class="styled">
+      <li>Publier des contenus illicites, diffamatoires, injurieux, discriminatoires, haineux ou portant atteinte à la dignité d'une personne</li>
+      <li>Harceler, menacer, intimider ou exercer toute forme de pression sur un autre membre</li>
+      <li>Effectuer du démarchage commercial non sollicité ou de la prospection agressive envers d'autres membres</li>
+      <li>Publier des contenus promotionnels ou publicitaires sans accord préalable de Kolyb</li>
+      <li>Usurper l'identité d'une autre personne ou d'une organisation</li>
+      <li>Diffuser des informations délibérément fausses, trompeuses ou susceptibles d'induire en erreur</li>
+      <li>Contourner l'algorithme de mise en relation à des fins non prévues par le service</li>
+      <li>Accéder ou tenter d'accéder au compte d'un autre utilisateur sans autorisation</li>
+      <li>Scraper, copier, extraire ou réutiliser de manière non autorisée des données de la plateforme</li>
+      <li>Introduire des virus, codes malveillants ou tout élément nuisant au bon fonctionnement de l'application</li>
+    </ul>
+    <h3 class="section-title">6.3 Signalement</h3>
+    <p>Tout utilisateur peut signaler un contenu ou comportement contraire aux présentes CGU via la fonctionnalité de signalement in-app ou en contactant Kolyb à contact@kolyb.app.</p>
+  </div>
+
+  <!-- ART 7 -->
+  <div class="article" id="art7">
+    <div class="article-header">
+      <div class="article-num">07</div>
+      <h2 class="article-title">Propriété intellectuelle</h2>
+    </div>
+    <p>L'ensemble des éléments composant l'application Kolyb — nom, logo, designs, interface, architecture, algorithmes, codes sources, textes, visuels — sont la propriété exclusive de l'éditrice ou font l'objet de licences accordées à Kolyb. Toute reproduction, représentation ou exploitation, totale ou partielle, sans autorisation écrite préalable de Kolyb, est strictement interdite.</p>
+    <h3 class="section-title">7.2 Contenus publiés par les utilisateurs</h3>
+    <p>L'utilisateur reste propriétaire des contenus qu'il publie sur Kolyb. En les publiant, il accorde à Kolyb une licence non exclusive, mondiale, gratuite aux fins d'affichage, de modération et d'amélioration anonymisée du service. Kolyb ne peut revendre ni exploiter commercialement ces contenus à d'autres fins.</p>
+  </div>
+
+  <!-- ART 8 -->
+  <div class="article" id="art8">
+    <div class="article-header">
+      <div class="article-num">08</div>
+      <h2 class="article-title">Responsabilités et limitations</h2>
+    </div>
+    <div class="warning-box">
+      <div class="info-title">⚠ Pas un service de santé</div>
+      <p>Kolyb est un outil de productivité et de bien-être subjectif. Les fonctionnalités de suivi (sommeil, humeur, check-in) sont des outils d'auto-évaluation à usage strictement personnel. Elles ne constituent en aucun cas un diagnostic médical, un suivi thérapeutique ou un avis médical. En cas de difficultés de santé physique ou mentale, l'utilisateur est invité à consulter un professionnel de santé qualifié.</p>
+    </div>
+    <p>Kolyb n'est pas responsable des contenus publiés par les utilisateurs dans les espaces communautaires (statut d'hébergeur – LCEN). Les mises en relation proposées par Kolyb sont des suggestions sans garantie de résultat. La responsabilité de Kolyb ne pourra être engagée pour des dommages indirects, immatériels ou consécutifs.</p>
+  </div>
+
+  <!-- ART 9 -->
+  <div class="article" id="art9">
+    <div class="article-header">
+      <div class="article-num">09</div>
+      <h2 class="article-title">Modération et sanctions</h2>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Niveau de sanction</th><th>Déclenchement et modalités</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Avertissement</td><td>Premier manquement mineur – notification e-mail avec rappel des règles</td></tr>
+        <tr><td>Suspension temporaire</td><td>Manquement répété ou sérieux – suspension du compte pour 7 à 30 jours</td></tr>
+        <tr><td>Suppression de contenu</td><td>Tout contenu contraire aux CGU peut être retiré immédiatement et sans préavis</td></tr>
+        <tr><td>Résiliation définitive</td><td>Manquements graves ou répétés – clôture définitive du compte sans remboursement</td></tr>
+        <tr><td>Signalement aux autorités</td><td>Contenu illicite ou menace grave – signalement aux autorités compétentes</td></tr>
+      </tbody>
+    </table>
+    <p>L'utilisateur sanctionné peut contester la décision en adressant un e-mail motivé à contact@kolyb.app dans un délai de 15 jours. Kolyb s'engage à répondre dans un délai de 15 jours ouvrés.</p>
+  </div>
+
+  <!-- ART 10 -->
+  <div class="article" id="art10">
+    <div class="article-header">
+      <div class="article-num">10</div>
+      <h2 class="article-title">Résiliation et suppression de compte</h2>
+    </div>
+    <p>L'utilisateur peut supprimer son compte à tout moment depuis « Paramètres > Mon compte > Supprimer mon compte » ou en contactant contact@kolyb.app. La suppression entraîne la clôture immédiate de l'accès aux fonctionnalités, la suppression des données personnelles dans les délais prévus par la Politique de confidentialité, et la fin de l'abonnement en cours à son terme.</p>
+  </div>
+
+  <!-- ART 11 -->
+  <div class="article" id="art11">
+    <div class="article-header">
+      <div class="article-num">11</div>
+      <h2 class="article-title">Disponibilité du service et maintenance</h2>
+    </div>
+    <p>Kolyb s'efforce d'assurer la disponibilité du service 7j/7 et 24h/24, sans pouvoir garantir une disponibilité continue et sans interruption. Des opérations de maintenance planifiée peuvent entraîner des interruptions temporaires, les utilisateurs étant informés au moins 48 heures à l'avance. Des interruptions indépendantes de la volonté de Kolyb (panne d'hébergeur, force majeure) ne pourront engager la responsabilité de Kolyb.</p>
+  </div>
+
+  <!-- ART 12 -->
+  <div class="article" id="art12">
+    <div class="article-header">
+      <div class="article-num">12</div>
+      <h2 class="article-title">Modification des CGU</h2>
+    </div>
+    <p>Kolyb se réserve le droit de modifier les présentes CGU pour prendre en compte des évolutions légales, de nouvelles fonctionnalités ou les retours de la communauté. Toute modification substantielle sera notifiée par notification in-app et par e-mail au moins 30 jours avant l'entrée en vigueur. La version en vigueur est consultable à tout moment depuis l'application.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ART 15 -->
+  <div class="article" id="art15">
+    <div class="article-header">
+      <div class="article-num">15</div>
+      <h2 class="article-title">Médiation et règlement des litiges</h2>
+    </div>
+    <p>En cas de litige, l'utilisateur est invité à contacter en priorité le service client à contact@kolyb.app. Kolyb s'engage à répondre dans un délai de 15 jours ouvrés.</p>
+    <div class="info-box">
+      <div class="info-title">Médiation — CM2C</div>
+      <p>Conformément aux articles L.616-1 et R.616-1 du Code de la consommation, en cas d'échec de la réclamation, l'utilisateur peut saisir gratuitement le médiateur : CM2C – Centre de Médiation de la Consommation de Conciliateurs de Justice — www.cm2c.net — 14 rue Saint-Jean, 75017 Paris. La saisine doit intervenir dans un délai d'un an à compter de la réclamation initiale.</p>
+    </div>
+    <p>Plateforme européenne de résolution en ligne des litiges : <a href="https://ec.europa.eu/consumers/odr" style="color:var(--accent)">https://ec.europa.eu/consumers/odr</a></p>
+    <p>À défaut de résolution amiable : Tribunal judiciaire de Privas (Ardèche).</p>
+  </div>
+
+  <!-- ART 16 -->
+  <div class="article" id="art16">
+    <div class="article-header">
+      <div class="article-num">16</div>
+      <h2 class="article-title">Droit applicable</h2>
+    </div>
+    <p>Les présentes CGU sont soumises au droit français. Elles sont rédigées en langue française, qui fait foi en cas de traduction.</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-text">© Kolyb 2026 — Tous droits réservés — Document contractuel — Version 1.0 — 20 avril 2026</span>
+    <div class="footer-links">
+      <a href="politique-confidentialite.html">Politique de confidentialité</a>
+      <a href="mailto:contact@kolyb.app">contact@kolyb.app</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
