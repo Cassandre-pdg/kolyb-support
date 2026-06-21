@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Supprimer mon compte — Kolyb</title>
+  <meta name="description" content="Demandez la suppression de votre compte Kolyb et de toutes vos données personnelles." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-deep:    #0D0B1E;
+      --bg-surface: #1A1836;
+      --bg-card:    #1E1C3A;
+      --border:     #22204A;
+      --primary:    #6D28D9;
+      --accent:     #8B7FE8;
+      --light:      #C4B5FD;
+      --text-white: #FFFFFF;
+      --text-soft:  #C4B5FD;
+      --text-muted: #8B7FE8;
+      --radius-md:  12px;
+      --radius-lg:  18px;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-deep);
+      color: var(--text-white);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--light);
+      letter-spacing: -0.02em;
+      margin-bottom: 40px;
+      display: block;
+      text-decoration: none;
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .subtitle {
+      color: var(--text-soft);
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+    .card h2 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--light);
+    }
+    .card p, .card li {
+      font-size: 15px;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+    .card ul {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+    .card li { margin-bottom: 6px; }
+    .warning {
+      background: rgba(255, 77, 106, 0.08);
+      border: 1px solid rgba(255, 77, 106, 0.25);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      font-size: 14px;
+      color: #FF8FA3;
+      line-height: 1.6;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      margin-top: 8px;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .option-in-app {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .step-num {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-text { font-size: 15px; color: var(--text-soft); line-height: 1.6; }
+    .steps { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
+    footer {
+      margin-top: 48px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="logo">kolyb</a>
+
+    <h1>Supprimer mon compte</h1>
+    <p class="subtitle">Tu peux demander la suppression de ton compte Kolyb et de toutes tes données personnelles. Cette action est irréversible.</p>
+
+    <div class="warning">
+      Attention : la suppression de ton compte entraine la perte definitive de toutes tes donnees (check-ins, objectifs, taches, progression, badges). Cette action ne peut pas etre annulee.
+    </div>
+
+    <div class="card">
+      <h2>Option 1 : Directement dans l'application</h2>
+      <div class="steps">
+        <div class="option-in-app">
+          <div class="step-num">1</div>
+          <div class="step-text">Ouvre Kolyb et va dans <strong>Mon Profil</strong></div>
+        </div>
+        <div class="option-in-app">
+          <div class="step-num">2</div>
+          <div class="step-text">Appuie sur <strong>Mon compte</strong></div>
+        </div>
+        <div class="option-in-app">
+          <div class="step-num">3</div>
+          <div class="step-text">Appuie sur <strong>Supprimer mon compte</strong> et confirme</div>
+        </div>
+        <div class="option-in-app">
+          <div class="step-num">4</div>
+          <div class="step-text">Ton compte et toutes tes donnees seront supprimes dans un delai de <strong>30 jours</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Option 2 : Par email</h2>
+      <p>Si tu n'as plus acces a l'application, envoie un email a notre equipe avec l'adresse email associee a ton compte :</p>
+      <br>
+      <a href="mailto:contact@kolyb.app?subject=Suppression%20de%20mon%20compte%20Kolyb&body=Bonjour%2C%0A%0AJe%20souhaite%20supprimer%20mon%20compte%20Kolyb%20et%20toutes%20mes%20donnees%20personnelles.%0A%0AAdresse%20email%20du%20compte%20%3A%20%5BTon%20email%5D%0A%0AMerci." class="btn">Envoyer la demande par email</a>
+      <br><br>
+      <p>Nous traitons toutes les demandes dans un delai maximum de <strong>30 jours</strong>, conformement au RGPD.</p>
+    </div>
+
+    <div class="card">
+      <h2>Donnees supprimees</h2>
+      <ul>
+        <li>Profil et informations personnelles</li>
+        <li>Check-ins et journaux emotionnels</li>
+        <li>Objectifs, projets et taches</li>
+        <li>Habitudes et progression</li>
+        <li>Posts et interactions dans Le Salon</li>
+        <li>Badges, streaks et points</li>
+        <li>Historique des sessions Flow et Pomodoro</li>
+        <li>Toutes les donnees associees au compte</li>
+      </ul>
+    </div>
+
+    <footer>
+      <p>© 2026 Kolyb — <a href="confidentialite.html">Politique de confidentialite</a> · <a href="cgu.html">CGU</a> · <a href="index.html">Support</a></p>
+    </footer>
+  </div>
+</body>
+</html>
